@@ -12,14 +12,14 @@ interface ClassConstructor {
     new (...args: any[]): {}
 }
 
-export const Serialize = (dto: ClassConstructor) => UseInterceptors(new SerializeInterceptor(dto));
+export const Serialize = (dto: ClassConstructor) => UseInterceptors(new SerializeInterceptor(dto)); 
 
 
 export class SerializeInterceptor implements NestInterceptor {
     constructor(private dto: any) {}
 
     intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
-        // Run something before a request  is handled
+        // Run something before a request is handled
         // by the request handler
         // console.log('Im running before the handler', context);
 
