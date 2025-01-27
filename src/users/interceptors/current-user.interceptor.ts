@@ -7,6 +7,7 @@ import {
 import { UsersService } from "../users.service";
 import { Observable } from "rxjs";
 
+
 @Injectable()
 export class CurrentUserInterceptor implements NestInterceptor {
     constructor(private usersService: UsersService) {}
@@ -17,7 +18,7 @@ export class CurrentUserInterceptor implements NestInterceptor {
 
         if(id) {
             const user = await this.usersService.findOne(id);
-            request.currentUser = user;
+            request.currentUser = user || {};
         }
         
         return handler.handle();
